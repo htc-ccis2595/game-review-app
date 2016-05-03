@@ -63,5 +63,6 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         ffviii.setTags(ffviiiTags);
         gameRepository.save(ffviii);
         log.info("Saved Game - name: " + ffviii.getName() + ", game_id = " + ffviii.getId());
+
     }
 }
