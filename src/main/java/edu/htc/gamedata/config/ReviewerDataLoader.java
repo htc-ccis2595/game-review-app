@@ -27,6 +27,5 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event){
         Reviewer reviewer = new Reviewer();
-
     }
 }

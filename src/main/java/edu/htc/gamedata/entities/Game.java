@@ -14,6 +14,12 @@ public class Game {
     private String releaseDate;
     private String platform;
 
+    public Game() {}
+
+    public Game(String name){
+        this.name = name;
+    }
+
     @OneToMany
     private List<Tag> tags;
 
