@@ -1,4 +1,4 @@
-package edu.htc.gamedata.config;
+package edu.htc.gamedata.services;
 
 import edu.htc.gamedata.entities.Game;
 import edu.htc.gamedata.repositories.GameRepository;
@@ -22,12 +22,7 @@ public class GameController {
 
     @RequestMapping("/search/game")
     public Game findGame(@RequestParam(value="id") int id) {
-        Game game =  new Game();
-
-        game.setName("Test Game");
-        game.setPlatform("PC");
-        game.setYearReleased("1984");
-
+        Game game =  gameRepository.findOne(id);
         return game;
     }
 }
