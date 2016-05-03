@@ -10,3 +10,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 }
+
+
+
+// web link  http://localhost:8080/search/game?id=3
