@@ -36,7 +36,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         tags.add(new Tag("RPG"));
         gameRepository.save(game);
 
-        log.info("Saved Game - name: " + game.getName());
+        log.info("Saved Game - name: " + game.getName() + " id = " + game.getId());
 
 
     }
