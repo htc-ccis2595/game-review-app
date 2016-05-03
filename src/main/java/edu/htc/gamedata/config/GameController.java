@@ -1,4 +1,4 @@
-package edu.htc.gamedata.services;
+package edu.htc.gamedata.config;
 
 import edu.htc.gamedata.entities.Game;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ public class GameController {
 
         game.setName("Test Game");
         game.setPlatform("PC");
-        game.setYearReleased("1984");
+        game.setReleaseDate("1984");
 
         return game;
     }

@@ -9,6 +9,12 @@ public class Tag {
     @Id
     String tag;
 
+    public Tag() {}
+
+    public Tag(String tag){
+        this.tag = tag;
+    }
+
     public String getTag() {
         return tag;
     }

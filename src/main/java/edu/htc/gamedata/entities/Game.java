@@ -13,7 +13,6 @@ public class Game {
     private String name;
     private String releaseDate;
     private String platform;
-    private String yearReleased;
 
     @OneToMany
     private List<Tag> tags;
@@ -51,14 +50,6 @@ public class Game {
 
     public void setPlatform(String platform) {
         this.platform = platform;
-    }
-
-    public String getYearReleased() {
-        return yearReleased;
-    }
-
-    public void setYearReleased(String yearReleased) {
-        this.yearReleased = yearReleased;
     }
 
     public List<Tag> getTags() {
