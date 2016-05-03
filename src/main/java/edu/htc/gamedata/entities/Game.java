@@ -15,10 +15,10 @@ public class Game {
     private String platform;
     private String yearReleased;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Tag> tags;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Review> reviews;
 
     public int getId() {
