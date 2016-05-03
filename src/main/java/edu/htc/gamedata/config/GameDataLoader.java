@@ -32,9 +32,10 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         game.setName("Final Fantasy XIV: A Realm Reborn");
         game.setReleaseDate("2006");
         game.setPlatform("PC");
-        ArrayList tags = new ArrayList<Tag>();
-        tags.add(new Tag("MMO"));
-        tags.add(new Tag("RPG"));
+        //ArrayList tags = new ArrayList<Tag>();
+        //tags.add(new Tag("MMO"));
+        //tags.add(new Tag("RPG"));
+        //game.setTags(tags);
         game = gameRepository.save(game);
         log.info("Saved Game - name: " + game.getName() + " id = " + game.getId());
 
@@ -42,9 +43,10 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         game1.setName("Fallout 4");
         game1.setReleaseDate("2015");
         game1.setPlatform("PlayStation 4");
-        ArrayList tags1 = new ArrayList<Tag>();
-        tags1.add(new Tag("Single Player"));
-        tags1.add(new Tag("RPG"));
+        //ArrayList tags1 = new ArrayList<Tag>();
+        //tags1.add(new Tag("Single Player"));
+        //tags1.add(new Tag("RPG"));
+        //game1.setTags(tags1);
         game1 = gameRepository.save(game1);
         log.info("Saved Game - name: " + game1.getName() + " id = " + game1.getId());
 
@@ -52,9 +54,9 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         game2.setName("The Sims 4");
         game2.setReleaseDate("2015");
         game2.setPlatform("PC");
-        ArrayList tags2 = new ArrayList<Tag>();
-        tags2.add(new Tag("Simulation"));
-        tags2.add(new Tag("EA"));
+       // ArrayList tags2 = new ArrayList<Tag>();
+       // tags2.add(new Tag("Simulation"));
+       // tags2.add(new Tag("EA"));
         game2 = gameRepository.save(game2);
         log.info("Saved Game - name: " + game2.getName() + " id = " + game2.getId());
 
