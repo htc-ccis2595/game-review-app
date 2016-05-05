@@ -1,9 +1,6 @@
 package edu.htc.gamedata.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -18,10 +15,10 @@ public class Reviewer {
     private String comments;
     private String password;
 
-    @ManyToMany
+    @ManyToMany(cascade= CascadeType.ALL)
     private List<Game> favoriteGames;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Review> reviews;
 
 
