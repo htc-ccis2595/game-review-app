@@ -13,12 +13,11 @@ public class Game {
     private String name;
     private String releaseDate;
     private String platform;
-    private String yearReleased;
 
-    @OneToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     private List<Tag> tags;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Review> reviews;
 
     public int getId() {
@@ -51,14 +50,6 @@ public class Game {
 
     public void setPlatform(String platform) {
         this.platform = platform;
-    }
-
-    public String getYearReleased() {
-        return yearReleased;
-    }
-
-    public void setYearReleased(String yearReleased) {
-        this.yearReleased = yearReleased;
     }
 
     public List<Tag> getTags() {
