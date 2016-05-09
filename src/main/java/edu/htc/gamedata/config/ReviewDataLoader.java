@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.Date;
 /**
  * Created by Student on 5/2/2016.
  */
+@Component
 public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     private ReviewRepository reviewRepository;
@@ -46,51 +48,45 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         //review.setId(1);
         review.setComments("Cool Game");
         review.setReviewDate(new Date());
+        review.setStarRating(4);
+        review.setGame(ffvii);
 
-//        log.info("Saved Game - name: " + game2.getName() + " id = " + game2.getId());
+        log.info("Saved Review for Game - name: " + ffvii.getName() + " id = " + ffvii.getId());
+
+
+        Game fifa = new Game();
+        fifa.setName("Fifa 2016");
+        fifa.setReleaseDate("2016");
+        fifa.setPlatform("Xbox");
+        ArrayList tagsFifa = new ArrayList<Tag>();
+        tagsFifa.add("GTT");
+
+        Review reviewFifa = new Review();
+        review = reviewRepository.save(review);
+        review.setComments("love soccor");
+        review.setReviewDate(new Date());
+        review.setStarRating(5);
+        review.setGame(fifa);
+
+        log.info("Saved Review for Game - name: " + fifa.getName() + " id = " + fifa.getId());
 
 
 
+        Game cod = new Game();
+        fifa.setName("Call of Duty 5");
+        fifa.setReleaseDate("2014");
+        fifa.setPlatform("Xbox");
+        ArrayList tagsCod = new ArrayList<Tag>();
+        tagsCod.add("GTP");
 
+        Review reviewCod = new Review();
+        review = reviewRepository.save(review);
+        review.setComments("love this game");
+        review.setReviewDate(new Date());
+        review.setStarRating(5);
+        review.setGame(cod);
 
-//        Game game = new Game();
-//        game.setName("Final Fantasy XIV: A Realm Reborn");
-//        game.setReleaseDate("2006");
-//        game.setPlatform("PC");
-//        ArrayList tags = new ArrayList<Tag>();
-//        tags.add(new Tag("MMO"));
-//        tags.add(new Tag("RPG"));
-//
-//        game = gameRepository.save(game);
-//
-//        log.info("Saved Game - name: " + game.getName() + " id = " + game.getId());
-
-//
-//        Game game1 = new Game();
-//        game1.setName("Call of Duty 5");
-//        game1.setReleaseDate("2010");
-//        game1.setPlatform("XBox360");
-//        ArrayList tags1 = new ArrayList<Tag>();
-//        tags1.add(new Tag("TST"));
-//        tags1.add(new Tag("GRT"));
-//
-//        game1 = gameRepository.save(game1);
-//
-//        log.info("Saved Game - name: " + game1.getName() + " id = " + game1.getId());
-//
-//
-//        Game game2 = new Game();
-//        game2.setName("Need for Speed VII");
-//        game2.setReleaseDate("2014");
-//        game2.setPlatform("PS");
-//        ArrayList tags2 = new ArrayList<Tag>();
-//        tags2.add(new Tag("GGP"));
-//        tags2.add(new Tag("STT"));
-//
-//        game2 = gameRepository.save(game2);
-//
-//        log.info("Saved Game - name: " + game2.getName() + " id = " + game2.getId());
-//
+        log.info("Saved Review for Game - name: " + cod.getName() + " id = " + cod.getId());
 
     }
 
