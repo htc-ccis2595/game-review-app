@@ -15,7 +15,7 @@ public class Game {
     private String platform;
 
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.ALL)
     private List<Tag> tags; //need TAG to work with one to many
 
     @OneToMany(cascade=CascadeType.ALL)
