@@ -3,6 +3,7 @@ package edu.htc.gamedata.config;
 /**
  * Created by Student on 5/2/2016.
  */
+import edu.htc.gamedata.entities.Game;
 import edu.htc.gamedata.entities.Reviewer;
 import edu.htc.gamedata.entities.Tag;
 import edu.htc.gamedata.repositories.ReviewerRepository;
@@ -26,6 +27,17 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event){
+
         Reviewer reviewer = new Reviewer();
+        reviewer.setUserName("BCP27");
+        reviewer.setAge(24);
+        reviewer.setName("Brian");
+        reviewer.setGender("M");
+        reviewer.setComments("didn't actually play it");
+        reviewer.setPassword("REDACTED");
+        ArrayList favoriteGames = new ArrayList<Game>();
+        favoriteGames.add(new Game("Final Fantasy XIV: A Realm Reborn"));
+        reviewerRepository.save(reviewer);
+        log.info("Saved Reviewer - UserName: " + reviewer.getUserName());
     }
 }
