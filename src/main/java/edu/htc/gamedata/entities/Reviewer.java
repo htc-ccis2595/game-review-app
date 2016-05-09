@@ -1,9 +1,6 @@
 package edu.htc.gamedata.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -18,6 +15,7 @@ public class Reviewer {
     private String comments;
     private String password;
 
+<<<<<<< HEAD
     public Reviewer() {
     }
 
@@ -26,16 +24,25 @@ public class Reviewer {
     }
 
     @ManyToMany
+=======
+    @ManyToMany(cascade=CascadeType.ALL)
+>>>>>>> 8c64a4104b7ec524993980fd07135db0ff9b8e95
     private List<Game> favoriteGames;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Review> reviews;
-
 
     public String getUserName() {
         return userName;
     }
 
+<<<<<<< HEAD
+    public String getUserName() {
+        return userName;
+    }
+
+=======
+>>>>>>> 8c64a4104b7ec524993980fd07135db0ff9b8e95
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -95,4 +102,23 @@ public class Reviewer {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+<<<<<<< HEAD
+=======
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Reviewer)) return false;
+
+        Reviewer reviewer = (Reviewer) o;
+
+        return userName.equals(reviewer.userName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return userName.hashCode();
+    }
+>>>>>>> 8c64a4104b7ec524993980fd07135db0ff9b8e95
 }
