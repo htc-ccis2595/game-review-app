@@ -58,74 +58,74 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
             reviewer = new Reviewer();
             reviewer.setUserName("TestUser1");
         }
+        Reviewer reviewer2 = new Reviewer();
+        reviewer2.setUserName("jllrk");
+
+
 
         Review review = new Review();
-        Game game = createFinalFantasyXiv();
-        review.setGame(game);
+        Game ffxiv = createFinalFantasyXiv();
+        review.setGame(ffxiv);
         review.setReviewer(reviewer);
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
 
-        review = new Review();
-        game = createBorderlands2();
-        review.setGame(game);
-        review.setReviewer(reviewer);
+        Review review2 = new Review();
+        Game Btfld4 = createBattlefield4();
+        review2.setGame(Btfld4);
+        review2.setReviewer(reviewer2);
 
-        reviewRepository.save(review);
-        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+        reviewRepository.save(review2);
+        log.info("Saved Review for game: " + review2.getGame().getName() + " review_id = " + review2.getId());
 
-        review = new Review();
-        game = createSkate3();
-        review.setGame(game);
-        review.setReviewer(reviewer);
+        Review review3 = new Review();
+        Game Sprsmsh = createSuperSmashBros();
+        review3.setGame(Sprsmsh);
+        review3.setReviewer(reviewer);
 
-        reviewRepository.save(review);
-        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+        reviewRepository.save(review3);
+        log.info("Saved Review for game: " + review3.getGame().getName() + " review_id = " + review3.getId());
 
-        Reviewer reviewer1 = new Reviewer();
-        reviewer1.setUserName("jllrk");
-        review = new Review();
-        review.setGame(game);
-        review.setReviewer(reviewer1);
 
-        reviewRepository.save(review);
-        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+
+       // reviewRepository.save(review);
+       // log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
     }
 
     private Game createFinalFantasyXiv() {
-        Game game = new Game();
-        game.setName("Final Fantasy XIV: A Realm Reborn");
-        game.setReleaseDate("2006");
-        game.setPlatform("PC");
-        ArrayList game1tags = new ArrayList<Tag>();
-        game1tags.add(tagRepository.findOrCreateTag("MMO"));
-        game1tags.add(tagRepository.findOrCreateTag("RPG"));
-        game.setTags(game1tags);
-        return game;
+        Game ffxiv = new Game();
+        ffxiv.setName("Final Fantasy XIV: A Realm Reborn");
+        ffxiv.setReleaseDate("2006");
+        ffxiv.setPlatform("PC");
+        ArrayList xxivrrTags = new ArrayList<Tag>();
+        xxivrrTags.add(tagRepository.findOrCreateTag("MMO"));
+        xxivrrTags.add(tagRepository.findOrCreateTag("RPG"));
+        ffxiv.setTags(xxivrrTags);
+        return ffxiv;
     }
 
-    private Game createBorderlands2() {
-        Game game = new Game();
-        game.setName("Borderlands 2");
-        game.setReleaseDate("2012");
-        game.setPlatform("PS3");
-        ArrayList game2Tags = new ArrayList<Tag>();
-        game2Tags.add(tagRepository.findOrCreateTag("Shooter"));
-        game2Tags.add(tagRepository.findOrCreateTag("RPG"));
-        game.setTags(game2Tags);
-        gameRepository.save(game);
-        return game;
+    private Game createBattlefield4() {
+        Game Btfld4 = new Game();
+        Btfld4.setName("BattleField 4");
+        Btfld4.setReleaseDate("2013");
+        Btfld4.setPlatform("PS4");
+        ArrayList battlefieldTags = new ArrayList<Tag>();
+        battlefieldTags.add(tagRepository.findOrCreateTag("MMO"));
+        //battlefieldTags.add(tagRepository.findOrCreateTag("First-Person"));
+        //battlefieldTags.add(tagRepository.findOrCreateTag("multi-player"));
+        Btfld4.setTags(battlefieldTags);
+        return Btfld4;
     }
-    private Game createSkate3() {
-        Game game = new Game();
-        game.setName("Skate 3");
-        game.setReleaseDate("2010");
-        game.setPlatform("PS3");
-        ArrayList game3Tags = new ArrayList<Tag>();
-        game3Tags.add(tagRepository.findOrCreateTag("Sports"));
-        game.setTags(game3Tags);
-        return game;
+    private Game createSuperSmashBros() {
+        Game spsmsh = new Game();
+        spsmsh.setName("Super Smash Brothers");
+        spsmsh.setReleaseDate("1999");
+        spsmsh.setPlatform("Nintendo 64");
+        ArrayList sprsmshTags = new ArrayList<Tag>();
+        sprsmshTags.add(tagRepository.findOrCreateTag("multi-player fighter"));
+        spsmsh.setTags(sprsmshTags);
+        return spsmsh;
     }
 
 
