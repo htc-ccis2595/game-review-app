@@ -9,6 +9,12 @@ public class Tag {
     @Id
     String tag;
 
+    public Tag() {} //--Must have default constructor
+
+    public Tag(String tag) {
+        this.tag = tag;
+    }
+
     public String getTag() {
         return tag;
     }
