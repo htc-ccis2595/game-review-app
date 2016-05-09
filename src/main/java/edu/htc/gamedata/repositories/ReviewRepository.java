@@ -1,6 +1,7 @@
 package edu.htc.gamedata.repositories;
 
-import edu.htc.gamedata.entities.Game;
+
+
 import edu.htc.gamedata.entities.Review;
 import org.springframework.data.repository.CrudRepository;
 

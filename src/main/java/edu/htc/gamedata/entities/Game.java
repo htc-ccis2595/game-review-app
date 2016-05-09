@@ -14,16 +14,18 @@ public class Game {
     private String releaseDate;
     private String platform;
 
+
     public Game() {}
 
     public Game(String name){
         this.name = name;
     }
 
-    @OneToMany
+
+    @ManyToMany(cascade = {CascadeType.ALL})
     private List<Tag> tags;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Review> reviews;
 
     public int getId() {

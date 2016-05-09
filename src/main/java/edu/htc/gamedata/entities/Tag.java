@@ -1,5 +1,7 @@
 package edu.htc.gamedata.entities;
 
+import org.springframework.data.domain.Persistable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,7 +14,8 @@ public class Tag {
     public Tag() {}
 
     public Tag(String tag){
-        this.tag = tag;
+
+        this.tag = tag.toUpperCase();
     }
 
     public String getTag() {
@@ -20,6 +23,22 @@ public class Tag {
     }
 
     public void setTag(String tag) {
-        this.tag = tag;
+        this.tag = tag.toUpperCase();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tag tag1 = (Tag) o;
+
+        return tag.equals(tag1.tag);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return tag.hashCode();
     }
 }
