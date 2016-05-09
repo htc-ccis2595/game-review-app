@@ -9,10 +9,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Game game;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Reviewer reviewer;
 
     private int starRating;
