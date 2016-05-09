@@ -12,23 +12,23 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
 /**
  * Created by Joel on 5/2/2016.
  */
+@Component
 public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     private ReviewRepository reviewRepository;
     private ReviewerRepository reviewerRepository;
     private TagRepository tagRepository;
-
-
-
     private GameRepository gameRepository;
 
-    private Logger log = Logger.getLogger(GameDataLoader.class);
+    private Logger log = Logger.getLogger(ReviewerDataLoader.class);
 
     @Autowired
     public void setGameRepository(GameRepository gameRepository) {
@@ -49,31 +49,41 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         Reviewer reviewer1 = new Reviewer();
-
-        Review review1 = new Review();
-        Game ffxiv = createFinalFantasyXiv();
-        review1.setGame(ffxiv);
-        review1.setReviewer(reviewer1);
+        reviewer1.setUserName("jllrk");
+        reviewer1.setAge(23);
+        reviewer1.setName("Joel");
+        reviewer1.setGender("M");
+        reviewer1.setPassword("PasswordJ");
 
         reviewerRepository.save(reviewer1);
-        log.info("Saved Reviewer: " + reviewer1.getName() + " review_id = " + reviewer1.getUserName() + " reviews they did: " + reviewer1.getReviews());
+        log.info("Saved Reviewer: " + reviewer1.getName() + ", reviewer_username = " + reviewer1.getUserName());
+
+
+        Reviewer reviewer2 = new Reviewer();
+        reviewer2.setUserName("greenzel");
+        reviewer2.setAge(44);
+        reviewer2.setName("Thomas");
+        reviewer2.setGender("M");
+        reviewer2.setPassword("PasswordT");
+
+
+        reviewerRepository.save(reviewer2);
+        log.info("Saved Reviewer: " + reviewer2.getName() + ", reviewer_username = " + reviewer2.getUserName());
+
+        Reviewer reviewer3 = new Reviewer();
+        reviewer3.setUserName("llama27");
+        reviewer3.setAge(16);
+        reviewer3.setName("Beth");
+        reviewer3.setGender("F");
+        reviewer3.setPassword("PasswordB");
+
+        reviewerRepository.save(reviewer3);
+        log.info("Saved Reviewer: " + reviewer3.getName() + ", reviewer_username = " + reviewer3.getUserName());
     }
-
-
-        private Game createFinalFantasyXiv() {
-            Game ffxiv = new Game();
-            ffxiv.setName("Final Fantasy XIV: A Realm Reborn");
-            ffxiv.setReleaseDate("2006");
-            ffxiv.setPlatform("PC");
-            ArrayList xxivrrTags = new ArrayList<Tag>();
-            xxivrrTags.add(tagRepository.findOrCreateTag("MMO"));
-            xxivrrTags.add(tagRepository.findOrCreateTag("RPG"));
-            ffxiv.setTags(xxivrrTags);
-            return ffxiv;
-        }
 
 
 
