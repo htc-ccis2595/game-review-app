@@ -37,14 +37,20 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        Reviewer reviewer = new Reviewer();
-
-        reviewer.setName("John");
-        ArrayList<Review> reviews = new ArrayList<Review>();
-        //reviews.add(reviewRepository.)
-
-        reviewerRepository.save(reviewer);
-        log.info("Saved Reviewer for game: " + reviewer.getName());
+//        Review review = reviewRepository.findOne(1);
+//
+//        if (review == null) {
+//            review = new Reviewer();
+//            review.setReviewer("TestUser1");
+//        }
+//        Reviewer reviewer = new Reviewer();
+//
+//        reviewer.setName("John");
+//        ArrayList<Review> reviews = new ArrayList<Review>();
+//        //reviews.add(reviewRepository.)
+//
+//        reviewerRepository.save(reviewer);
+//        log.info("Saved Reviewer for game: " + reviewer.getName());
 
 
 
