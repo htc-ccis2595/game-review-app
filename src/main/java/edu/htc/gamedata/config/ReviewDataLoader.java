@@ -1,38 +1,51 @@
 package edu.htc.gamedata.config;
 
 
+
 import edu.htc.gamedata.entities.Game;
 import edu.htc.gamedata.entities.Review;
 import edu.htc.gamedata.entities.Reviewer;
 import edu.htc.gamedata.entities.Tag;
 import edu.htc.gamedata.repositories.GameRepository;
 import edu.htc.gamedata.repositories.ReviewRepository;
+
 import edu.htc.gamedata.repositories.ReviewerRepository;
 import edu.htc.gamedata.repositories.TagRepository;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+
+/**
+ * Created by Student on 5/2/2016.
+ */
+
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+
 
 @Component
 public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     private ReviewRepository reviewRepository;
+
     private ReviewerRepository reviewerRepository;
     private TagRepository tagRepository;
     private GameRepository gameRepository;
 
 
+
     private Logger log = Logger.getLogger(ReviewDataLoader.class);
 
     @Autowired
-    public void setReviewRepository(ReviewRepository repository) {
-        this.reviewRepository = repository;
-    }
+    public void setReviewRepository(ReviewRepository reviewRepository) {this.reviewRepository = reviewRepository;}
 
     @Autowired
     public void setReviewerRepository(ReviewerRepository repository) {
@@ -100,6 +113,7 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         game.setTags(ffxivtags);
         return game;
     }
+
 
 
 }
