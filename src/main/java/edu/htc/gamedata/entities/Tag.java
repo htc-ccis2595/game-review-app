@@ -17,6 +17,7 @@ public class Tag {
         this.tag = tag.toUpperCase();
     }
 
+
     public String getTag() {
         return tag;
     }

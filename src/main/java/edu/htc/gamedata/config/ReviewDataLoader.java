@@ -4,6 +4,11 @@ package edu.htc.gamedata.config;
 import edu.htc.gamedata.entities.Game;
 import edu.htc.gamedata.entities.Review;
 import edu.htc.gamedata.entities.Reviewer;
+import edu.htc.gamedata.repositories.ReviewRepository;
+
+import edu.htc.gamedata.entities.Game;
+import edu.htc.gamedata.entities.Review;
+import edu.htc.gamedata.entities.Reviewer;
 import edu.htc.gamedata.entities.Tag;
 import edu.htc.gamedata.repositories.GameRepository;
 import edu.htc.gamedata.repositories.ReviewRepository;
@@ -15,8 +20,15 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
+
+
+
+/**
+ * Created by volkg_000 on 5/2/2016.
+ */
+
+
 
 @Component
 public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -74,6 +86,16 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+
+        Reviewer reviewer1 = new Reviewer();
+        reviewer1.setUserName("jordomanee");
+        review = new Review();
+        review.setGame(game);
+        review.setReviewer(reviewer1);
+
+        reviewRepository.save(review);
+        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+
     }
 
     private Game createFinalFantasyXiv() {
@@ -100,6 +122,7 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         game.setTags(ffxivtags);
         return game;
     }
+
 
 
 }

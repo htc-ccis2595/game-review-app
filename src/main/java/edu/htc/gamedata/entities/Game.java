@@ -14,6 +14,8 @@ public class Game {
     private String releaseDate;
     private String platform;
 
+    @Transient
+    private double avgRating;
     @ManyToMany(cascade = {CascadeType.ALL})
     private List<Tag> tags;
 
@@ -68,5 +70,11 @@ public class Game {
         this.reviews = reviews;
     }
 
+    public double getAvgRating() {
+        return avgRating;
+    }
 
+    public void setAvgRating(double avgRating) {
+        this.avgRating = avgRating;
+    }
 }
