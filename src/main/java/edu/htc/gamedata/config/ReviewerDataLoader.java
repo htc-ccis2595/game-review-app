@@ -39,6 +39,7 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
         reviewer.setName("Jordan");
         reviewer.setGender("Male");
         reviewer.setUserName("jordovolk");
+        reviewer.setPassword("123456789");
         ArrayList<Game> favoriteGames = new ArrayList<>();
         favoriteGames.add(game);
         reviewer.setFavoriteGames(favoriteGames);
