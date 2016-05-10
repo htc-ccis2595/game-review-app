@@ -15,10 +15,12 @@ public class Reviewer {
     private String comments;
     private String password;
 
+
     @ManyToMany(cascade=CascadeType.ALL)
     private List<Game> favoriteGames;
 
     @OneToMany(cascade=CascadeType.ALL)
+
     private List<Review> reviews;
 
     public String getUserName() {
@@ -52,6 +54,8 @@ public class Reviewer {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+
 
     public String getComments() {
         return comments;
@@ -100,4 +104,5 @@ public class Reviewer {
     public int hashCode() {
         return userName.hashCode();
     }
+
 }

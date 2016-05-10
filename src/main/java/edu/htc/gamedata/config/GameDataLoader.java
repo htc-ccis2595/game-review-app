@@ -3,13 +3,17 @@ package edu.htc.gamedata.config;
 
 import edu.htc.gamedata.entities.Game;
 import edu.htc.gamedata.entities.Tag;
+
 import edu.htc.gamedata.repositories.*;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -39,7 +43,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         persistFinalFantasyViii();
     }
 
-    //@Transactional
+    @Transactional
     private void persistFinalFantasyVii() {
         Game ffvii = new Game();
         ffvii.setName("Final Fantasy VII");
@@ -51,6 +55,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         gameRepository.save(ffvii);
         log.info("Saved Game - name: " + ffvii.getName() + ", game_id = " + ffvii.getId());
     }
+
 
     //@Transactional
     private void persistFinalFantasyViii() {

@@ -1,6 +1,8 @@
 package edu.htc.gamedata.config;
 
 
+
+
 import edu.htc.gamedata.entities.Game;
 import edu.htc.gamedata.entities.Review;
 import edu.htc.gamedata.entities.Reviewer;
@@ -18,8 +20,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
+
+/**
+ * Created by Student on 5/2/2016.
+ */
+
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+
+
 @Component
 public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEvent> {
+
 
     private ReviewRepository reviewRepository;
     private ReviewerRepository reviewerRepository;
@@ -62,6 +75,7 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         Review review = new Review();
         Game game = createFinalFantasyXiv();
         review.setGame(game);
+        review.setStarRating(5);
         review.setReviewer(reviewer);
 
         reviewRepository.save(review);
@@ -70,6 +84,7 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         review = new Review();
         game = createFinalFantasyXivReborn();
         review.setGame(game);
+        review.setStarRating(4);
         review.setReviewer(reviewer);
 
         reviewRepository.save(review);
@@ -100,6 +115,5 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         game.setTags(ffxivtags);
         return game;
     }
-
 
 }
