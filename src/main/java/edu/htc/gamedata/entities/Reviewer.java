@@ -15,18 +15,9 @@ public class Reviewer {
     private String comments;
     private String password;
 
-<<<<<<< HEAD
-    public Reviewer() {
-    }
 
-    public Reviewer(String userName){
-        this.userName = userName;
-    }
-
-    @ManyToMany
-=======
     @ManyToMany(cascade=CascadeType.ALL)
->>>>>>> 8c64a4104b7ec524993980fd07135db0ff9b8e95
+
     private List<Game> favoriteGames;
 
     @OneToMany(cascade=CascadeType.ALL)
@@ -36,13 +27,6 @@ public class Reviewer {
         return userName;
     }
 
-<<<<<<< HEAD
-    public String getUserName() {
-        return userName;
-    }
-
-=======
->>>>>>> 8c64a4104b7ec524993980fd07135db0ff9b8e95
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -102,8 +86,7 @@ public class Reviewer {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
-<<<<<<< HEAD
-=======
+
 
     @Override
     public boolean equals(Object o) {
@@ -120,5 +103,4 @@ public class Reviewer {
     public int hashCode() {
         return userName.hashCode();
     }
->>>>>>> 8c64a4104b7ec524993980fd07135db0ff9b8e95
 }
