@@ -78,6 +78,15 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+
+        review = new Review();
+        game = createBanished();
+        review.setGame(game);
+        review.setReviewer(reviewer);
+
+        reviewRepository.save(review);
+        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+
     }
 
     private Game createFinalFantasyXiv() {
@@ -105,4 +114,15 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         return game;
     }
 
+    private Game createBanished() {
+        Game game = new Game();
+        game.setName("Banished");
+        game.setReleaseDate("2013");
+        game.setPlatform("PC");
+        ArrayList tags = new ArrayList<Tag>();
+        tags.add(tagRepository.findOrCreateTag("Strategy"));
+        tags.add(tagRepository.findOrCreateTag("Simulation"));
+        game.setTags(tags);
+        return game;
+    }
 }

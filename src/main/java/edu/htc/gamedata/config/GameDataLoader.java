@@ -37,49 +37,11 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
     public void onApplicationEvent(ContextRefreshedEvent event) {
         persistFinalFantasyVii();
         persistFinalFantasyViii();
+        persistMineCraft1();
     }
 
-//**<<<<<<< HEAD
-   //**     Game game = new Game();
- //**       game.setName("Final Fantasy XIV: A Realm Reborn");
-//**        game.setReleaseDate("2006");
-//**        game.setPlatform("PC");
 
- //**     ArrayList tags = new ArrayList<Tag>();
 
-//**        tags.add(new Tag("MMO"));
-//**        tags.add(new Tag("RFG"));
-
- //**       gameRepository.save(game);
-
- //**       log.info("Saved Game - name: " + game.getName() + " id = " + game.getId());
-
- //**       game = new Game();
-    //**      game.setName("MineCraft 1.0");
-    //**game.setReleaseDate("2006");
-    //**game.setPlatform("PC");
-    //**
-    //**tags = new ArrayList<Tag>();
-    //**
-    //**tags.add(new Tag("multi-level"));
-    //**tags.add(new Tag("HD graphics"));
-    //**
-    //**gameRepository.save(game);
-    //**
-    //**log.info("Saved Game - name: " + game.getName() + " id = " + game.getId());
-    //**
-    //**game = new Game();
-    //**game.setName("Candy Crush Saga 2.0");
-    //**game.setReleaseDate("2016");
-    //**game.setPlatform("PC");
-    //**
-    //**tags = new ArrayList<Tag>();
-    //**
-    //**tags.add(new Tag("multi-level"));
-    //**      tags.add(new Tag("game rewards"));
-    //**
-    //**gameRepository.save(game);
- //**=======
     //@Transactional
     private void persistFinalFantasyVii() {
         Game ffvii = new Game();
@@ -105,4 +67,18 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         gameRepository.save(ffviii);
         log.info("Saved Game - name: " + ffviii.getName() + ", game_id = " + ffviii.getId());
     }
+
+    //@Transactional
+    private void persistMineCraft1() {
+        Game minecraft1 = new Game();
+        minecraft1.setName("MineCraft");
+        minecraft1.setReleaseDate("2006");
+        minecraft1.setPlatform("PlayStation");
+        ArrayList minecraftTags = new ArrayList<Tag>();
+        minecraftTags.add(tagRepository.findOrCreateTag("HD Graphics"));
+        minecraft1.setTags(minecraftTags);
+        gameRepository.save(minecraft1);
+        log.info("Saved Game - name: " + minecraft1.getName() + ", game_id = " + minecraft1.getId());
+    }
+
 }

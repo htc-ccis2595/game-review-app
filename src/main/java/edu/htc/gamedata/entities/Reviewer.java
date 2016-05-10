@@ -7,10 +7,9 @@ import java.util.List;
 public class Reviewer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
     private String userName;
+
+
     private String name;
     private int age;
     private String gender;
@@ -25,14 +24,6 @@ public class Reviewer {
 
     public String getUserName() {
         return userName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setUserName(String userName) {

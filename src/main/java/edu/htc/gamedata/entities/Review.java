@@ -12,6 +12,7 @@ public class Review {
     @ManyToOne(cascade=CascadeType.ALL)
     private Game game;
 
+    @ManyToOne(cascade=CascadeType.ALL)
     private Reviewer reviewer;
 
     private int starRating;
