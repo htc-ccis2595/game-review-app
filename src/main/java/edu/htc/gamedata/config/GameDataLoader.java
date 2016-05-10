@@ -28,6 +28,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         Game gameone = new Game();
+        gameone.setId(1);
         gameone.setName("Final Fantasy XIV: A Realm Reborn");
         gameone.setReleaseDate("2006");
         gameone.setPlatform("PC");
@@ -40,6 +41,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         log.info("Saved Game - name: " + gameone.getName());
 
         Game gameTwo = new Game();
+        gameTwo.setId(2);
         gameTwo.setName("eve Online");
         gameTwo.setReleaseDate("2004");
         gameTwo.setPlatform("PC");
@@ -52,6 +54,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         log.info("Saved Game - name: " + gameTwo.getName());
 
         Game gameThree = new Game();
+        gameThree.setId(3);
         gameThree.setName("Fallout 4");
         gameThree.setReleaseDate("2016");
         gameThree.setPlatform("XBOX One");

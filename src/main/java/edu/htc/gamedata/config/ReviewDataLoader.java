@@ -36,36 +36,36 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         Review reviewOne = new Review();
        Game game = new Game();
         Reviewer reviewer = new Reviewer();
-
+        reviewOne.setId(1);
         reviewOne.setGame(game);
         reviewOne.setReviewer(reviewer);
         reviewOne.setStarRating(3);
         reviewOne.setReviewDate(cal.getTime());
 
-        reviewRepository.save(reviewOne);
+   //   reviewRepository.save(reviewOne);
 
 
         Review reviewTwo = new Review();
         Game gameTwo = new Game();
         Reviewer reviewerTwo = new Reviewer();
-
+        reviewTwo.setId(2);
         reviewTwo.setGame(gameTwo);
-        reviewTwo.setReviewer(reviewer);
+        reviewTwo.setReviewer(reviewerTwo);
         reviewTwo.setStarRating(3);
         reviewTwo.setReviewDate(cal.getTime());
 
-        reviewRepository.save(reviewTwo);
+     //  reviewRepository.save(reviewTwo);
 
         Review reviewThree = new Review();
         Game gameThree = new Game();
         Reviewer reviewerThree = new Reviewer();
-
+       reviewThree.setId(3);
         reviewThree.setGame(gameThree);
         reviewThree.setReviewer(reviewerThree);
         reviewThree.setStarRating(3);
         reviewThree.setReviewDate(cal.getTime());
 
-        reviewRepository.save(reviewThree);
+    //   reviewRepository.save(reviewThree);
     }
 
 
