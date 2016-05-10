@@ -37,9 +37,10 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
     public void onApplicationEvent(ContextRefreshedEvent event) {
         persistFinalFantasyVii();
         persistFinalFantasyViii();
+        persistHalo();
     }
 
-    //@Transactional
+    @Transactional
     private void persistFinalFantasyVii() {
         Game ffvii = new Game();
         ffvii.setName("Final Fantasy VII");
@@ -52,7 +53,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         log.info("Saved Game - name: " + ffvii.getName() + ", game_id = " + ffvii.getId());
     }
 
-    //@Transactional
+    @Transactional
     private void persistFinalFantasyViii() {
         Game ffviii = new Game();
         ffviii.setName("Final Fantasy VIII");
@@ -65,4 +66,17 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         log.info("Saved Game - name: " + ffviii.getName() + ", game_id = " + ffviii.getId());
 
     }
+    @Transactional
+    private void persistHalo(){
+        Game halo = new Game();
+        halo.setName("Halo");
+        halo.setReleaseDate("2010");
+        halo.setPlatform("Xbox");
+        ArrayList haloTags = new ArrayList<Tag>();
+        haloTags.add(tagRepository.findOrCreateTag("FPS"));
+        halo.setTags(haloTags);
+        gameRepository.save(halo);
+        log.info("Saved Game - name: " + halo.getName() + ", game_id = " + halo.getId());
+    }
+
 }

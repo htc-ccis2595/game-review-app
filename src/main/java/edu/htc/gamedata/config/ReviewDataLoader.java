@@ -74,7 +74,15 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
-    }
+
+        review = new Review();
+        game = createHalo();
+        review.setGame(game);
+        review.setReviewer(reviewer);
+
+        reviewRepository.save(review);
+        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+}
 
     private Game createFinalFantasyXiv() {
         Game game = new Game();
@@ -98,6 +106,18 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         ffxivtags.add(tagRepository.findOrCreateTag("MMO"));
         ffxivtags.add(tagRepository.findOrCreateTag("RPG"));
         game.setTags(ffxivtags);
+        return game;
+    }
+
+    private Game createHalo() {
+        Game game = new Game();
+        game.setName("Halo");
+        game.setReleaseDate("2010");
+        game.setPlatform("Xbox");
+        ArrayList halotags = new ArrayList<Tag>();
+        halotags.add(tagRepository.findOrCreateTag("FPS"));
+        halotags.add(tagRepository.findOrCreateTag("Online"));
+        game.setTags(halotags);
         return game;
     }
 
