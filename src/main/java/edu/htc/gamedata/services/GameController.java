@@ -28,6 +28,13 @@ public class GameController {
         return game;
     }
 
+    @RequestMapping("/search/gamesByReleaseDate")
+    public List<Game> findReleaseDate(@RequestParam(value="releaseDate") String year){
+        List<Game> game=gameRepository.findByReleaseDate(year);
+        return game;
+    }
+
+
     @RequestMapping("/search/gamesByName")
     public List<Game> findByName(@RequestParam(value="name") String name){
         List<Game> game= gameRepository.findByName(name);

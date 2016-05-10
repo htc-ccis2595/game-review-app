@@ -40,4 +40,11 @@ public class ReviewerController {
         List<Reviewer> reviewers = reviewerRepository.findByAge(age);
         return reviewers;
     }
+
+    @RequestMapping("/search/reviewerByName")
+    public List<Reviewer> findByName(@RequestParam(value="name")String name){
+        List<Reviewer> reviewers=reviewerRepository.findByNameIgnoreCase(name);
+        return reviewers;
+    }
+
 }

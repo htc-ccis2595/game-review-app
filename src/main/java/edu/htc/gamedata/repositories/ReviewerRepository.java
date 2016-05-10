@@ -4,11 +4,16 @@ import edu.htc.gamedata.entities.Reviewer;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.objenesis.strategy.StdInstantiatorStrategy;
 
 import java.util.List;
 
 
 public interface ReviewerRepository extends CrudRepository<Reviewer, String> {
+
+    List<Reviewer> findByNameIgnoreCase (String name);
+
+
 
     @Query("SELECT r FROM Reviewer r WHERE r.gender = :gender")
     List<Reviewer> findByGender(@Param("gender") String gender);

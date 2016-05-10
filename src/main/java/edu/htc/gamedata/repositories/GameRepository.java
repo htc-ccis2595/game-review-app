@@ -14,11 +14,9 @@ public interface GameRepository extends CrudRepository<Game, Integer> {
     List<Game> findByReleaseDate (String year);
 
     @Query("SELECT g FROM Game g WHERE g.platform = :platform")
-
     List<Game> findByPlatform(@Param("platform") String platform);
 
     @Query("SELECT g FROM Game g")
-
     List<Game> findAllGames();
 
     @Query("SELECT g FROM Game g WHERE g.platform = 'PC'")
