@@ -1,19 +1,23 @@
 package edu.htc.gamedata.config;
 
+
+
 import edu.htc.gamedata.entities.Game;
 import edu.htc.gamedata.entities.Review;
 import edu.htc.gamedata.entities.Reviewer;
 import edu.htc.gamedata.entities.Tag;
 import edu.htc.gamedata.repositories.GameRepository;
 import edu.htc.gamedata.repositories.ReviewRepository;
+import edu.htc.gamedata.repositories.ReviewerRepository;
+import edu.htc.gamedata.repositories.TagRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-
 /**
  * Created by cheey on 5/2/2016.
  */
@@ -22,6 +26,9 @@ import java.util.ArrayList;
 public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     private ReviewRepository reviewRepository;
+    private ReviewerRepository reviewerRepository;
+    private TagRepository tagRepository;
+    private GameRepository gameRepository;
 
 
     private Logger log = Logger.getLogger(ReviewDataLoader.class);
@@ -31,8 +38,31 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         this.reviewRepository = reviewRepository;
     }
 
+    @Autowired
+    public void setReviewerRepository(ReviewerRepository repository) {
+        this.reviewerRepository = repository;
+    }
+
+    @Autowired
+    public void setTagRepository(TagRepository repository) {
+        this.tagRepository = repository;
+    }
+
+    @Autowired
+    public void setGameRepository(GameRepository repository) {
+        this.gameRepository = repository;
+    }
+
     @Override
+    @Transactional
+
     public void onApplicationEvent(ContextRefreshedEvent event) {
+
+        Reviewer reviewer = reviewerRepository.findOne("TestUser1");
+        if (reviewer == null) {
+            reviewer = new Reviewer();
+            reviewer.setUserName("TestUser1");
+        }
 
         //--CREATE GAME
         Game game = new Game();
@@ -42,15 +72,16 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         game.setPlatform("PC");
         //--CREATE & ADD TO ARRAYLIST
         ArrayList tags = new ArrayList<Tag>();
-        tags.add(new Tag("MMO"));
-        tags.add(new Tag("RPG"));
+        tags.add(tagRepository.findOrCreateTag("MMO"));
+        tags.add(tagRepository.findOrCreateTag("RPG"));
         //--CREATE REVIEW
         Review review = new Review();
         review.setGame(game);
+        review.setStarRating(4);
         //--SAVE REVIEW TO REPOSITORY
         review = reviewRepository.save(review);
         //--PRINT REVIEW TO LOGFILE
-        log.info("Review saved for game: " + review.getGame().getName() + " -- " + " Game ID =  " + review.getId());
+        log.info("Review saved for game: " + review.getGame().getName() + " -- " + " Review ID =  " + review.getId());
 
         //--REVIEW2
         Game game2 = new Game();
@@ -62,8 +93,9 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         tags2.add(new Tag("RPG"));
         Review review2 = new Review();
         review2.setGame(game2);
+        review2.setStarRating(5);
         review2 = reviewRepository.save(review2);
-        log.info("Review saved for game: " + review2.getGame().getName() + " -- " + " Game ID =  " + review2.getId());
+        log.info("Review saved for game: " + review2.getGame().getName() + " -- " + " Review ID =  " + review2.getId());
 
         //--REVIEW3
         Game game3 = new Game();
@@ -74,8 +106,9 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         tags3.add(new Tag("RPG"));
         Review review3 = new Review();
         review3.setGame(game3);
+        review3.setStarRating(4);
         review3 = reviewRepository.save(review3);
-        log.info("Review saved for game: " + review3.getGame().getName() + " -- " + " Game ID =  " + review3.getId());
+        log.info("Review saved for game: " + review3.getGame().getName() + " -- " + " Review ID =  " + review3.getId());
 
         //--REVIEW4
         Game game4 = new Game();
@@ -86,8 +119,9 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         tags4.add(new Tag("RPG"));
         Review review4 = new Review();
         review4.setGame(game4);
+        review4.setStarRating(5);
         review4 = reviewRepository.save(review4);
-        log.info("Review saved for game: " + review4.getGame().getName() + " -- " + " Game ID =  " + review4.getId());
+        log.info("Review saved for game: " + review4.getGame().getName() + " -- " + " Review ID =  " + review4.getId());
     }
 
 }

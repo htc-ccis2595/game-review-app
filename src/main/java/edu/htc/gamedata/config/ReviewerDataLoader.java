@@ -9,6 +9,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+
+
 /**
  * Created by cheey on 5/2/2016.
  */
@@ -68,7 +70,7 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
         reviewer3.setAge(19);
         reviewer3.setGender("male");
         reviewer3 = reviewerRepository.save(reviewer3);
-        log.info("New Reviewer Created! " + "Reviewer Username: " + reviewer2.getUserName());
+        log.info("New Reviewer Created! " + "Reviewer Username: " + reviewer3.getUserName());
 
     }
 
