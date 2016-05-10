@@ -63,5 +63,13 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
         reviewerRepository.save(reviewer2);
         log.info("Saved reviewer " + reviewer2.getName() + " as username " + reviewer2.getUserName());
 
+        Reviewer reviewer3 = new Reviewer();
+        reviewer3.setName("Steve");
+        reviewer3.setUserName("Manimal1");
+        reviewer3.setAge(36);
+        reviewer3.setGender("M");
+        reviewer3.setPassword("666666");
+        reviewerRepository.save(reviewer3);
+        log.info("Saved reviewer " + reviewer3.getName() + " as username " + reviewer3.getUserName());
     }
 }
