@@ -14,11 +14,16 @@ public class Game {
     private String releaseDate;
     private String platform;
 
+    @Transient
+    private double avgRating;
 
-    @OneToMany (cascade = CascadeType.ALL)
+
+
+    @ManyToMany(cascade = {CascadeType.ALL})
     private List<Tag> tags;
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL)
+
     private List<Review> reviews;
 
     public int getId() {
@@ -69,5 +74,11 @@ public class Game {
         this.reviews = reviews;
     }
 
+    public double getAvgRating() {
+        return avgRating;
+    }
 
+    public void setAvgRating(double avgRating) {
+        this.avgRating = avgRating;
+    }
 }
