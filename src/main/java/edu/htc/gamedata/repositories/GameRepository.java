@@ -22,4 +22,6 @@ public interface GameRepository extends CrudRepository<Game, Integer> {
 
     @Query("SELECT g FROM Game g WHERE g.platform = 'PC'")
     List<Game> findAllPCGames(@Param("platform") String platform);
+
+
 }
