@@ -35,34 +35,55 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        persistFinalFantasyVii();
-        persistFinalFantasyViii();
+     //   Game gameOne = createFinalFantasyXiv();
+    //    Game gameTwo = createEveOnline();
+    //    Game gameThree = createUtlimaOnline();
+
+        Game gameOne = new Game();
+        gameOne.setName("Final Fantasy XIV");
+        gameOne.setReleaseDate("2010");
+        gameOne.setPlatform("playstation");
+        ArrayList ffxivtags = new ArrayList<Tag>();
+
+
+        ffxivtags.add(tagRepository.findOrCreateTag("Fantasy"));
+        gameOne.setTags(ffxivtags);
+
+
+        gameRepository.save(gameOne);
+        log.info("Saved Game - name: " + gameOne.getName() + " id = " + gameOne.getId());
+
+        Game gameTwo = new Game();
+    gameTwo.setName("Eve Online");
+    gameTwo.setReleaseDate("2006");
+    gameTwo.setPlatform("PC");
+        ArrayList Evetags = new ArrayList<Tag>();
+
+        Evetags.add(tagRepository.findOrCreateTag("MMO"));
+
+    gameTwo.setTags(Evetags);
+
+        gameRepository.save(gameTwo);
+        log.info("Saved Game - name: " + gameTwo.getName() + " id = " + gameTwo.getId());
+
+
+        Game gameThree = new Game();
+        gameThree.setName("Ultima Online");
+        gameThree.setReleaseDate("1999");
+        gameThree.setPlatform("PC");
+        ArrayList Ultimatags = new ArrayList<Tag>();
+
+
+        Ultimatags.add(tagRepository.findOrCreateTag("RPG"));
+        gameThree.setTags(Ultimatags);
+
+
+
+        gameRepository.save(gameThree);
+        log.info("Saved Game - name: " + gameThree.getName() + " id = " + gameThree.getId());
+
+
     }
 
-    //@Transactional
-    private void persistFinalFantasyVii() {
-        Game ffvii = new Game();
-        ffvii.setName("Final Fantasy VII");
-        ffvii.setReleaseDate("1997");
-        ffvii.setPlatform("PlayStation");
-        ArrayList ffviiTags = new ArrayList<Tag>();
-        ffviiTags.add(tagRepository.findOrCreateTag("RPG"));
-        ffvii.setTags(ffviiTags);
-        gameRepository.save(ffvii);
-        log.info("Saved Game - name: " + ffvii.getName() + ", game_id = " + ffvii.getId());
-    }
 
-    //@Transactional
-    private void persistFinalFantasyViii() {
-        Game ffviii = new Game();
-        ffviii.setName("Final Fantasy VIII");
-        ffviii.setReleaseDate("1999");
-        ffviii.setPlatform("PlayStation");
-        ArrayList ffviiiTags = new ArrayList<Tag>();
-        ffviiiTags.add(tagRepository.findOrCreateTag("RPG"));
-        ffviii.setTags(ffviiiTags);
-        gameRepository.save(ffviii);
-        log.info("Saved Game - name: " + ffviii.getName() + ", game_id = " + ffviii.getId());
-
-    }
 }

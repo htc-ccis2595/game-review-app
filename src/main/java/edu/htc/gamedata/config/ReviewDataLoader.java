@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 @Component
 public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -53,27 +54,48 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
+
+
         Reviewer reviewer = reviewerRepository.findOne("TestUser1");
         if (reviewer == null) {
             reviewer = new Reviewer();
             reviewer.setUserName("TestUser1");
         }
 
-        Review review = new Review();
+        Review reviewOne = new Review();
         Game game = createFinalFantasyXiv();
-        review.setGame(game);
-        review.setReviewer(reviewer);
 
-        reviewRepository.save(review);
-        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
 
-        review = new Review();
-        game = createFinalFantasyXivReborn();
-        review.setGame(game);
-        review.setReviewer(reviewer);
+        reviewOne.setGame(game);
+        reviewOne.setReviewer(reviewer);
 
-        reviewRepository.save(review);
-        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+
+
+         reviewRepository.save(reviewOne);
+
+
+        Review reviewTwo = new Review();
+        Game gameTwo = createEveOnline();
+
+
+        reviewTwo.setGame(gameTwo);
+        reviewTwo.setReviewer(reviewer);
+
+
+
+          reviewRepository.save(reviewTwo);
+
+        Review reviewThree = new Review();
+        Game gameThree = createUtlimaOnline();
+
+
+        reviewThree.setGame(gameThree);
+        reviewThree.setReviewer(reviewer);
+
+
+
+           reviewRepository.save(reviewThree);
+
     }
 
     private Game createFinalFantasyXiv() {
@@ -89,15 +111,29 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         return game;
     }
 
-    private Game createFinalFantasyXivReborn() {
+    private Game createEveOnline() {
         Game game = new Game();
-        game.setName("Final Fantasy XIV: A Realm Reborn");
-        game.setReleaseDate("2013");
+        game.setName("Eve Online");
+        game.setReleaseDate("2006");
         game.setPlatform("PC");
-        ArrayList ffxivtags = new ArrayList<Tag>();
-        ffxivtags.add(tagRepository.findOrCreateTag("MMO"));
-        ffxivtags.add(tagRepository.findOrCreateTag("RPG"));
-        game.setTags(ffxivtags);
+        ArrayList Evetags = new ArrayList<Tag>();
+
+        Evetags.add(tagRepository.findOrCreateTag("MMO"));
+        Evetags.add(tagRepository.findOrCreateTag("Sci-Fi"));
+        game.setTags(Evetags);
+        return game;
+    }
+
+    private Game createUtlimaOnline() {
+        Game game = new Game();
+        game.setName("Ultima Online");
+        game.setReleaseDate("1999");
+        game.setPlatform("PC");
+        ArrayList Evetags = new ArrayList<Tag>();
+
+        Evetags.add(tagRepository.findOrCreateTag("MMO"));
+        Evetags.add(tagRepository.findOrCreateTag("RPG"));
+        game.setTags(Evetags);
         return game;
     }
 
