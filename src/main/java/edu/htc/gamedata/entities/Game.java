@@ -13,7 +13,15 @@ public class Game {
     private String name;
     private String releaseDate;
     private String platform;
+    private double averageRating;
 
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
 
     @ManyToMany(cascade=CascadeType.ALL)
     private List<Tag> tags; //need TAG to work with one to many

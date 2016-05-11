@@ -25,5 +25,7 @@ public class ReviewerController {
         Reviewer reviewer =  reviewerRepository.findOne(userName);
         return reviewer;
     }
+
+
 }
 

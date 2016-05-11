@@ -47,6 +47,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         ffvii.setName("Final Fantasy VII");
         ffvii.setReleaseDate("1997");
         ffvii.setPlatform("PlayStation");
+        ffvii.setAverageRating(4.5);
         ArrayList ffviiTags = new ArrayList<Tag>();
         ffviiTags.add(tagRepository.findOrCreateTag("RPG"));
         ffvii.setTags(ffviiTags);
@@ -60,6 +61,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         ffviii.setName("Final Fantasy VIII");
         ffviii.setReleaseDate("1999");
         ffviii.setPlatform("PlayStation");
+        ffviii.setAverageRating(4.8);
         ArrayList ffviiiTags = new ArrayList<Tag>();
         ffviiiTags.add(tagRepository.findOrCreateTag("RPG"));
         ffviii.setTags(ffviiiTags);
@@ -74,6 +76,7 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         doom.setName("Doom");
         doom.setReleaseDate("1995");
         doom.setPlatform("PC");
+        doom.setAverageRating(4.0);
         ArrayList doomTags = new ArrayList<Tag>();
         doomTags.add(tagRepository.findOrCreateTag("RPG"));
         doom.setTags(doomTags);

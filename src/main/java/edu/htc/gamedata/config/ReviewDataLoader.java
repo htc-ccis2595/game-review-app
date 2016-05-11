@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Component
 public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -62,6 +63,8 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         Review review = new Review();
         Game game = createFinalFantasyXiv();
         review.setGame(game);
+        review.setStarRating(5);
+        review.setComments("Love");
         review.setReviewer(reviewer);
 
         reviewRepository.save(review);
@@ -70,6 +73,9 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         review = new Review();
         game = createFinalFantasyXivReborn();
         review.setGame(game);
+        review.setStarRating(5);
+        review.setReviewDate(new Date(2012));
+        review.setComments("Love it");
         review.setReviewer(reviewer);
 
         reviewRepository.save(review);
@@ -78,6 +84,8 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         review = new Review();
         game = createFinalDoom();
         review.setGame(game);
+        review.setStarRating(4);
+        review.setComments("Love");
         review.setReviewer(reviewer);
 
         reviewRepository.save(review);
