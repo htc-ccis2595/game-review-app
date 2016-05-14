@@ -60,27 +60,30 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
             reviewer.setUserName("TestUser1");
         }
 
+        //FinalFantasyXiv
         Review review = new Review();
         Game game = createFinalFantasyXiv();
         review.setGame(game);
         review.setStarRating(5);
-        review.setComments("Love");
+        review.setComments("Awesome");
         review.setReviewer(reviewer);
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
 
+        //FinalFantasyXivReborn
         review = new Review();
         game = createFinalFantasyXivReborn();
         review.setGame(game);
         review.setStarRating(5);
         review.setReviewDate(new Date(2012));
-        review.setComments("Love it");
+        review.setComments("Awesome and fun");
         review.setReviewer(reviewer);
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
 
+        //doom
         review = new Review();
         game = createFinalDoom();
         review.setGame(game);
@@ -128,7 +131,5 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         return game;
 
     }
-
-
 }
 
