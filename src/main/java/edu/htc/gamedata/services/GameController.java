@@ -40,4 +40,9 @@ public class GameController {
         List<Game> game =  gameRepository.findAllGames();
         return game;
     }
+    @RequestMapping("/search/gamesByPlatform")
+    public List<Game> findGamesByPlatform (@RequestParam(value="platform") String platform){
+        List<Game> game = gameRepository.findByPlatform(platform);
+        return game;
+    }
 }
