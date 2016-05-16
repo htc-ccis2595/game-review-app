@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ReviewerController {
 
@@ -21,8 +23,25 @@ public class ReviewerController {
     }
 
     @RequestMapping("/search/reviewer")
-    public Reviewer findReviewer(@RequestParam(value="username") String userName) {
-        Reviewer reviewer =  reviewerRepository.findOne(userName);
+    public Reviewer findReviewer(@RequestParam(value = "username") String userName) {
+        Reviewer reviewer = reviewerRepository.findOne(userName);
         return reviewer;
     }
+
+    @RequestMapping("/search/reviewerByName")
+    public List<Reviewer> findByName(@RequestParam(value = "name") String name) {
+        List<Reviewer> reviewers = reviewerRepository.findByNameIgnoreCase(name);
+        return reviewers;
+    }
+    @RequestMapping("/search/reviewerByAge")
+    public List<Reviewer> findByAge(@RequestParam(value = "age") int age) {
+        List<Reviewer> reviewers = reviewerRepository.findByAge(age);
+        return reviewers;
+    }
+    @RequestMapping("/search/findByGender")
+    public List<Reviewer>findByGenderIgnoreCase(@RequestParam(value = "gender") String gender) {
+        List<Reviewer> reviewers = reviewerRepository.findByGenderIgnoreCase(gender);
+        return reviewers;
+    }
+
 }

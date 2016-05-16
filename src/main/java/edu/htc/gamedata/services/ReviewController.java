@@ -20,9 +20,10 @@ public class ReviewController {
         this.reviewRepository = repository;
     }
 
-    @RequestMapping("/search/review")
-    public Review findGame(@RequestParam(value="id") int id) {
+    @RequestMapping("/search/reviewByID")
+    public Review findReview(@RequestParam(value="id") int id) {
         Review review =  reviewRepository.findOne(id);
         return review;
     }
+
 }
