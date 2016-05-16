@@ -33,6 +33,7 @@ public class ReviewerController {
     @RequestMapping("/search/reviewer/all")
     public List<Reviewer> findAllReviewers() {
         //**http://localhost:8080/search/reviewer/all
+        //**
         log.info("Find all reviewers");
         List<Reviewer> reviewers = reviewerRepository.findAllReviewers();
         return reviewers;
