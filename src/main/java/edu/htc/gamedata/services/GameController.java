@@ -22,14 +22,16 @@ public class GameController {
     }
 
     @RequestMapping("/search/game")
-    public Game findGame(@RequestParam(value="id") int id) {
-        Game game =  gameRepository.findOne(id);
-        return game;
+    //**http://localhost:8080/search/game?id=1
+    public List<Game> findGame(@RequestParam(value="id") int id) {
+        List<Game> games=  gameRepository.findGame(id);
+        return games;
     }
 
     @RequestMapping("/search/gameById")
-    public Game findGameById(@RequestParam(value="id") int id) {
-        Game game =  gameRepository.findOne(id);
+    //**http://localhost:8080/search/gameById?id=1
+    public List<Game> findGameById(@RequestParam(value="id") int id) {
+        List<Game> game =  gameRepository.findGameById(id);
         //**double avgRating = reviewRepository.getAverageRating(id);
         //**log.info("Average rating = " + avgRating);
         //**game.setAvgRating(avgRating);
@@ -37,6 +39,7 @@ public class GameController {
     }
 
     @RequestMapping("/search/gamesByName")
+    //**http://localhost:8080/search/gamesByName?name=Candy Crush Saga 2.0
     public List<Game> findGamesByName(@RequestParam(value="name") String str) {
         log.info("Find games by name " + str);
         List<Game> game = gameRepository.findByName(str);
@@ -44,6 +47,7 @@ public class GameController {
     }
 
     @RequestMapping("/search/gamesByReleaseDate")
+    //**http://localhost:8080/search/gamesByReleaseDate?releaseDate=2016
     public List<Game> findGamesByReleaseDate(@RequestParam(value="releaseDate") String str) {
         log.info("Find games by release date " + str);
         List<Game> game =  gameRepository.findByReleaseDate(str);
@@ -51,6 +55,7 @@ public class GameController {
     }
 
     @RequestMapping("/search/gamesByPlatform")
+    //**http://localhost:8080/search/gamesByPlatform?platform=PC
     public List<Game> findGamesByPlatform(@RequestParam(value="platform") String str) {
         log.info("Find games by platform " + str);
         List<Game> game =  gameRepository.findByPlatform(str);
@@ -58,6 +63,7 @@ public class GameController {
     }
 
     @RequestMapping("/search/games")
+    //**http://localhost:8080/search/games
     public List<Game> findGames() {
         log.info("Find all games.");
         List<Game> game =  gameRepository.findAllGames();
@@ -65,6 +71,7 @@ public class GameController {
     }
 
     @RequestMapping("/search/games/pc")
+    //**http://localhost:8080/search/games/pc
     public List<Game> findPCGames() {
         log.info("Find all PC games.");
         List<Game> game =  gameRepository.findAllPcGames();

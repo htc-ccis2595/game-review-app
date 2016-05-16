@@ -38,6 +38,9 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         persistFinalFantasyVii();
         persistFinalFantasyViii();
         persistMineCraft1();
+        persistffxiv();
+        persistCandyCrush();
+
     }
 
 
@@ -81,4 +84,38 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         log.info("Saved Game - name: " + minecraft1.getName() + ", game_id = " + minecraft1.getId());
     }
 
+    //@Transactional
+    private void persistffxiv() {
+        Game ffxiv = new Game();
+        ffxiv.setName("Final Fantasy XIV: A Realm Reborn");
+        ffxiv.setReleaseDate("2006");
+        ffxiv.setPlatform("PC");
+
+        ArrayList tags = new ArrayList<Tag>();
+
+        tags.add(new Tag("MMO"));
+        tags.add(new Tag("RFG"));
+
+        gameRepository.save(ffxiv);
+
+        log.info("Saved Game - name: " + ffxiv.getName() + " id = " + ffxiv.getId());
+    }
+
+    //@Transactional
+    private void persistCandyCrush() {
+
+        Game ccsaga = new Game();
+        ccsaga.setName("Candy Crush Saga 2.0");
+        ccsaga.setReleaseDate("2016");
+        ccsaga.setPlatform("PC");
+
+        ArrayList tags = new ArrayList<Tag>();
+
+        tags.add(new Tag("multi-level"));
+        tags.add(new Tag("game rewards"));
+
+        gameRepository.save(ccsaga);
+
+        log.info("Saved Game - name: " + ccsaga.getName() + " id = " + ccsaga.getId());
+    }
 }

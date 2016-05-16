@@ -9,6 +9,12 @@ import java.util.List;
 
 public interface GameRepository extends CrudRepository<Game, Integer> {
 
+    @Query("Select g From Game g where g.id = :id")
+    List<Game> findGame(@Param("id") int Id);
+
+    @Query("Select g From Game g where g.id = :id")
+    List<Game> findGameById(@Param("id") int Id);
+
     List<Game> findByName(String name);
 
     List<Game> findByReleaseDate(String year);

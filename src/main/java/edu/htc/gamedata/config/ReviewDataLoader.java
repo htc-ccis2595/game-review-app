@@ -67,6 +67,7 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         Game game = createFinalFantasyXiv();
         review.setGame(game);
         review.setReviewer(reviewer);
+        review.setStarRating(4);
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
@@ -75,6 +76,7 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         game = createFinalFantasyXivReborn();
         review.setGame(game);
         review.setReviewer(reviewer);
+        review.setStarRating(3);
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
@@ -83,10 +85,39 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         game = createBanished();
         review.setGame(game);
         review.setReviewer(reviewer);
+        review.setStarRating(1);
 
         reviewRepository.save(review);
         log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
 
+
+        review = new Review();
+        game = createFinalFantasyVII();
+        review.setGame(game);
+        review.setReviewer(reviewer);
+        review.setStarRating(4);
+
+        reviewRepository.save(review);
+        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " +review.getId());
+
+
+        review = new Review();
+        game = createMineCraft1();
+        review.setGame(game);
+        review.setReviewer(reviewer);
+        review.setStarRating(2);
+
+        reviewRepository.save(review);
+        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
+
+        review = new Review();
+        game = createBattleship23();
+        review.setGame(game);
+        review.setReviewer(reviewer);
+        review.setStarRating(3);
+
+        reviewRepository.save(review);
+        log.info("Saved Review for game: " + review.getGame().getName() + " review_id = " + review.getId());
     }
 
     private Game createFinalFantasyXiv() {
@@ -125,4 +156,46 @@ public class ReviewDataLoader implements ApplicationListener<ContextRefreshedEve
         game.setTags(tags);
         return game;
     }
+
+    private Game createFinalFantasyVII(){
+
+        Game ffvii = new Game();
+        ffvii.setName("Final Fantasy VII");
+        ffvii.setReleaseDate("1999");
+        ffvii.setPlatform("PC");
+        ArrayList tags = new ArrayList<Tag>();
+        tags.add(new Tag("dreams"));
+        ffvii.setTags(tags);
+        return ffvii;
+    }
+
+    private Game createMineCraft1(){
+
+        Game mcraft1 = new Game();
+        mcraft1.setName("MineCraft I");
+        mcraft1.setReleaseDate("2012");
+        mcraft1.setPlatform("XBox");
+        ArrayList tags = new ArrayList<Tag>();
+        tags.add(new Tag("awards"));
+        tags.add(new Tag("build"));
+        mcraft1.setTags(tags);
+        return mcraft1;
+
+    }
+
+    private Game createBattleship23(){
+
+        Game battleship23 = new Game();
+        battleship23.setName("Battleship 2.3");
+        battleship23.setReleaseDate("2005");
+        battleship23.setPlatform("PC");
+        ArrayList tags = new ArrayList<Tag>();
+        tags.add(new Tag("bomb"));
+        tags.add(new Tag("best shot"));
+        battleship23.setTags(tags);
+        return battleship23;
+
+    }
+
+
 }
