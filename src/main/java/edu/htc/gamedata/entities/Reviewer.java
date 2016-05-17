@@ -7,20 +7,19 @@ import java.util.List;
 public class Reviewer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
     private String userName;
+
+
     private String name;
     private int age;
     private String gender;
     private String comments;
     private String password;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.ALL)
     private List<Game> favoriteGames;
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Review> reviews;
 
     public String getUserName() {
@@ -37,14 +36,6 @@ public class Reviewer {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getAge() {
@@ -95,7 +86,19 @@ public class Reviewer {
         this.reviews = reviews;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Reviewer)) return false;
 
+        Reviewer reviewer = (Reviewer) o;
 
+        return userName.equals(reviewer.userName);
 
+    }
+
+    @Override
+    public int hashCode() {
+        return userName.hashCode();
+    }
 }

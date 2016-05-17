@@ -10,16 +10,18 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Review> reviews;
+
     private String name;
     private String releaseDate;
     private String platform;
-    private String yearReleased;
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.ALL})
     private List<Tag> tags;
 
-    @OneToMany (cascade = CascadeType.ALL)
-    private List<Review> reviews;
+    @Transient
+    private double avgRating;
 
     public int getId() {
         return id;
@@ -53,14 +55,6 @@ public class Game {
         this.platform = platform;
     }
 
-    public String getYearReleased() {
-        return yearReleased;
-    }
-
-    public void setYearReleased(String yearReleased) {
-        this.yearReleased = yearReleased;
-    }
-
     public List<Tag> getTags() {
         return tags;
     }
@@ -77,5 +71,12 @@ public class Game {
         this.reviews = reviews;
     }
 
+    public double getAvgRating() {
+        return avgRating;
+    }
+
+    public void setAvgRating(double avgRating) {
+        this.avgRating = avgRating;
+    }
 
 }

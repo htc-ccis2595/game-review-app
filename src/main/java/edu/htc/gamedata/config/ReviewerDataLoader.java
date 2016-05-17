@@ -45,7 +45,7 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
 
         reviewer = reviewerRepository.save(reviewer);
 
-        log.info("Saved Reviewer - user name: " + reviewer.getUserName()+ " id = " + reviewer.getId());
+        log.info("Saved Reviewer - user name: " + reviewer.getUserName()+ " id = " + reviewer.getName());
 
         reviewer = new Reviewer();
         reviewer.setName("John Wayne");
@@ -71,7 +71,7 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
 
         reviewer = reviewerRepository.save(reviewer);
 
-        log.info("Saved Reviewer - user name: " + reviewer.getUserName()+ " id = " + reviewer.getId());
+        log.info("Saved Reviewer - user name: " + reviewer.getUserName()+ " id = " + reviewer.getName());
         reviewer = new Reviewer();
         reviewer.setName("Bill Murray");
         reviewer.setUserName("bm1968");
@@ -82,7 +82,7 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
 
         reviewer = reviewerRepository.save(reviewer);
 
-        log.info("Saved Reviewer - user name: " + reviewer.getUserName()+ " id = " + reviewer.getId());
+        log.info("Saved Reviewer - user name: " + reviewer.getUserName()+ " id = " + reviewer.getName());
 
         reviewer = new Reviewer();
         reviewer.setName("Jimmy Kimbel");
@@ -93,7 +93,7 @@ public class ReviewerDataLoader implements ApplicationListener<ContextRefreshedE
 
         reviewer = reviewerRepository.save(reviewer);
 
-        log.info("Saved Reviewer - user name: " + reviewer.getUserName()+ " id = " + reviewer.getId());
+        log.info("Saved Reviewer - user name: " + reviewer.getUserName()+ " id = " + reviewer.getName());
 
 
     }
