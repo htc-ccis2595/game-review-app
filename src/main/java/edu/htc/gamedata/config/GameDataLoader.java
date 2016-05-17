@@ -63,6 +63,18 @@ public class GameDataLoader implements ApplicationListener<ContextRefreshedEvent
         ffviii.setTags(ffviiiTags);
         gameRepository.save(ffviii);
         log.info("Saved Game - name: " + ffviii.getName() + ", game_id = " + ffviii.getId());
+    }
 
+    //@Transactional
+    private void persistFinalFantasyIv() {
+        Game ffiv = new Game();
+        ffiv.setName("Final Fantasy IV");
+        ffiv.setReleaseDate("2001");
+        ffiv.setPlatform("PlayStation");
+        ArrayList ffivTags = new ArrayList<Tag>();
+        ffivTags.add(tagRepository.findOrCreateTag("RPG"));
+        ffiv.setTags(ffivTags);
+        gameRepository.save(ffiv);
+        log.info("Saved Game - name: " + ffiv.getName() + ", game_id = " + ffiv.getId());
     }
 }
