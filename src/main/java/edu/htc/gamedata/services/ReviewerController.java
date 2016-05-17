@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ReviewerController {
 
@@ -21,8 +23,16 @@ public class ReviewerController {
     }
 
     @RequestMapping("/search/reviewer")
-    public Reviewer findReviewer(@RequestParam(value="username") String userName) {
-        Reviewer reviewer =  reviewerRepository.findOne(userName);
+    public Reviewer findByUserName(@RequestParam(value="username") String str) {
+        log.info("Finding reviewer by username " + str);
+        Reviewer reviewer = reviewerRepository.findByUserName(str);
         return reviewer;
+    }
+
+    @RequestMapping("/search/reviewersByGender")
+    public List<Reviewer> findReviewerGender(@RequestParam(value="gender") String gender) {
+        log.info("Finding reviewers of the " + gender + " gender");
+        List<Reviewer> reviewers = reviewerRepository.findByGender(gender);
+        return reviewers;
     }
 }
